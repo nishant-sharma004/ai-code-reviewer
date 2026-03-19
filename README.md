@@ -6,7 +6,7 @@ suggestions and improved code — streamed in real time like ChatGPT.
 
 ## 🚀 Live Demo
 
-[Click here to view live demo](#) <!-- add your Vercel link here later -->
+https://ai-code-reviewer-e09vb1vm1-nishantaisharma004-8526s-projects.vercel.app/
 
 ## ✨ Features
 
@@ -30,7 +30,7 @@ suggestions and improved code — streamed in real time like ChatGPT.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/ai-code-reviewer.git
+git clone https://github.com/nishant-sharma004/ai-code-reviewer
 cd ai-code-reviewer
 ```
 
@@ -82,4 +82,4 @@ app/
 
 ## 👨‍💻 Author
 
-Built by [Your Name] — [LinkedIn](#) | [GitHub](#)
+Built by Nishant Sharma — https://github.com/nishant-sharma004/ai-code-reviewer
