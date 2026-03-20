@@ -1,11 +1,12 @@
 export default function ReviewCards({ completion, isLoading, review, error }) {
   return (
     <div className="w-1/2 overflow-y-auto bg-gray-50 p-6">
-
       {/* Empty State */}
       {!completion && !review && !isLoading && (
-        <div className="h-full flex flex-col items-center
-                        justify-center text-center text-gray-400">
+        <div
+          className="h-full flex flex-col items-center
+                        justify-center text-center text-gray-400"
+        >
           <span className="text-6xl mb-4">🤖</span>
           <p className="text-lg font-medium">Ready to review your code</p>
           <p className="text-sm mt-2">
@@ -16,23 +17,47 @@ export default function ReviewCards({ completion, isLoading, review, error }) {
 
       {/* Error */}
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200
-                        rounded-lg text-red-600 text-sm">
+        <div
+          className="p-4 bg-red-50 border border-red-200
+                        rounded-lg text-red-600 text-sm"
+        >
           ❌ {error}
         </div>
       )}
 
       {/* Streaming Text */}
+      {isLoading && !completion && (
+        <div
+          className="h-full flex flex-col items-center 
+                  justify-center text-center"
+        >
+          {/* Spinner */}
+          <div
+            className="w-12 h-12 border-4 border-blue-100 
+                    border-t-blue-600 rounded-full 
+                    animate-spin mb-4"
+          ></div>
+
+          <p className="text-gray-600 font-medium">
+            AI is reviewing your code...
+          </p>
+          <p className="text-gray-400 text-sm mt-1">
+            This may take a few seconds
+          </p>
+        </div>
+      )}
       {isLoading && completion && (
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"/>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
             <span className="text-sm text-blue-500 font-medium">
               AI is reviewing...
             </span>
           </div>
-          <pre className="text-xs text-gray-600 font-mono
-                          whitespace-pre-wrap break-words">
+          <pre
+            className="text-xs text-gray-600 font-mono
+                          whitespace-pre-wrap break-words"
+          >
             {completion}
           </pre>
         </div>
@@ -41,14 +66,15 @@ export default function ReviewCards({ completion, isLoading, review, error }) {
       {/* Final Review Cards */}
       {review && !isLoading && (
         <div className="space-y-4">
-
           {/* Quality Score */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             {review.detectedLanguage && (
               <div className="mb-3">
-                <span className="text-xs bg-blue-50 text-blue-600
+                <span
+                  className="text-xs bg-blue-50 text-blue-600
                                  font-medium px-3 py-1 rounded-full
-                                 border border-blue-100">
+                                 border border-blue-100"
+                >
                   Detected: {review.detectedLanguage}
                 </span>
               </div>
@@ -67,9 +93,7 @@ export default function ReviewCards({ completion, isLoading, review, error }) {
           {/* Bugs */}
           {review.bugs?.length > 0 && (
             <div className="bg-white rounded-xl border border-red-100 p-6">
-              <h3 className="font-semibold text-red-500 mb-3">
-                🐛 Bugs Found
-              </h3>
+              <h3 className="font-semibold text-red-500 mb-3">🐛 Bugs Found</h3>
               <ul className="space-y-2">
                 {review.bugs.map((bug, i) => (
                   <li key={i} className="text-sm text-gray-700 flex gap-2">
@@ -121,17 +145,17 @@ export default function ReviewCards({ completion, isLoading, review, error }) {
               <h3 className="font-semibold text-purple-600 mb-3">
                 ✨ Improved Code
               </h3>
-              <pre className="bg-gray-50 p-4 rounded-lg text-xs
+              <pre
+                className="bg-gray-50 p-4 rounded-lg text-xs
                               overflow-x-auto text-gray-700 font-mono
-                              whitespace-pre-wrap">
+                              whitespace-pre-wrap"
+              >
                 {review.improvedCode}
               </pre>
             </div>
           )}
-
         </div>
       )}
-
     </div>
-  )
+  );
 }
